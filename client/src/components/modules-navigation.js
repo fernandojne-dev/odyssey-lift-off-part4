@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from '@emotion/styled';
-import { Link } from 'react-router-dom';
-import { colors, IconArrowRight, IconDoubleArrowRight } from '../styles';
-import { humanReadableTimeFromSeconds } from '../utils/helpers';
+import React from 'react'
+import styled from '@emotion/styled'
+import { Link } from 'react-router-dom'
+import { colors, IconArrowRight, IconDoubleArrowRight } from '../styles'
+import { humanReadableTimeFromSeconds } from '../utils/helpers'
 
 /**
  * Module Navigation: displays a list of modules titles
@@ -13,7 +13,7 @@ const ModulesNav = ({ module, track }) => {
     <ModulesNavContainer>
       <ModuleTitle>
         <h4>
-          <Link to="../..">{track.title}</Link>
+          <Link to='../..'>{track.title}</Link>
         </h4>
       </ModuleTitle>
       <ModulesList>
@@ -24,11 +24,13 @@ const ModulesNav = ({ module, track }) => {
                 to={`/track/${track.id}/module/${navModule.id}`}
               >
                 <ModuleListItemContent isActive={navModule.id === module.id}>
-                  {navModule.id === module.id ? (
-                    <IconDoubleArrowRight width="14px" />
-                  ) : (
-                    <IconArrowRight width="14px" weight="thin" />
-                  )}
+                  {navModule.id === module.id
+                    ? (
+                      <IconDoubleArrowRight width='14px' />
+                      )
+                    : (
+                      <IconArrowRight width='14px' weight='thin' />
+                      )}
                   <div>{navModule.title}</div>
                   <div>{humanReadableTimeFromSeconds(navModule.length)}</div>
                 </ModuleListItemContent>
@@ -38,10 +40,10 @@ const ModulesNav = ({ module, track }) => {
         ))}
       </ModulesList>
     </ModulesNavContainer>
-  );
-};
+  )
+}
 
-export default ModulesNav;
+export default ModulesNav
 
 /** Module Navigation styled components */
 const ModulesNavContainer = styled.div({
@@ -51,10 +53,10 @@ const ModulesNavContainer = styled.div({
   backgroundColor: colors.black.light,
   borderRadius: 4,
   border: `solid 1px ${colors.black.lighter}`,
-  overflow: 'auto',
-});
+  overflow: 'auto'
+})
 
-const trackTitleHeight = 70;
+const trackTitleHeight = 70
 
 const ModuleTitle = styled.div({
   display: 'flex',
@@ -70,33 +72,33 @@ const ModuleTitle = styled.div({
 
   a: {
     textDecoration: 'none',
-    color: colors.silver.base,
+    color: colors.silver.base
   },
   ':hover': {
-    backgroundColor: colors.black.base,
-  },
-});
+    backgroundColor: colors.black.base
+  }
+})
 
 const ModulesList = styled.ul({
   listStyle: 'none',
   margin: 0,
   padding: 0,
   overflowY: 'scroll',
-  height: `calc(100% - ${trackTitleHeight}px)`,
-});
+  height: `calc(100% - ${trackTitleHeight}px)`
+})
 
 const ModuleListItem = styled.li((props) => ({
   borderBottom: `solid 1px ${colors.grey.darker}`,
   ':last-child': {
-    borderBottom: 'none',
-  },
-}));
+    borderBottom: 'none'
+  }
+}))
 
 const ModuleNavStyledLink = styled(Link)({
   textDecoration: 'none',
   display: 'flex',
-  alignItems: 'center',
-});
+  alignItems: 'center'
+})
 
 const ModuleListItemContent = styled.div((props) => ({
   backgroundColor: props.isActive ? colors.black.base : colors.black.light,
@@ -110,6 +112,6 @@ const ModuleListItemContent = styled.div((props) => ({
   flex: 1,
   ':hover': {
     backgroundColor: props.isActive ? colors.black.dark : colors.black.base,
-    color: 'white',
-  },
-}));
+    color: 'white'
+  }
+}))
